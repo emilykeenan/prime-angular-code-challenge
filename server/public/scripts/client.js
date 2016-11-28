@@ -57,8 +57,9 @@ app.controller("HeroListController", ["$http", function($http){
   self.message = 'hl controller is running';
   self.heroes = [];
   self.currentPowers = [];
+  self.powers = [];
 
-  // getSuperpowers();
+  getSuperpowers();
   getHeroes();
 
   function getHeroes() {
@@ -84,7 +85,15 @@ app.controller("HeroListController", ["$http", function($http){
 
   self.editHero = function(hero) {
     var id = hero.id;
-    hero.power_id = hero.name.id;
+    var newPower = hero.name;
+    console.log(self.powers);
+
+    for (var i = 0; i < self.powers.length; i++) {
+      if(self.powers[i].name == newPower) {
+        hero.power_id = self.powers[i].id;
+      }
+    }
+
     console.log(hero);
     $http.put('/heroes/' + id, hero)
     .then(function(response) {
@@ -101,3 +110,17 @@ app.controller("HeroListController", ["$http", function($http){
   };
 
 }]); // end of HeroListController
+
+app.filter('unique', function() {
+
+ return function (arr, field) {
+   var o = {}, i, l = arr.length, r = [];
+   for(i=0; i<l;i+=1) {
+     o[arr[i][field]] = arr[i];
+   }
+   for(i in o) {
+     r.push(o[i]);
+   }
+   return r;
+ };
+})
