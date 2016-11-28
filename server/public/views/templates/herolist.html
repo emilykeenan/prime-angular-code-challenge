@@ -9,12 +9,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="heroData in hl.heroes">
-      <td>{{heroData.persona}}</td>
-      <td>{{heroData.alias}}</td>
-      <td>{{heroData.name}}</td>
-      <td>{{heroData.description}}</td>
-      <td><button class="status_button btn xsmall" ng-click="hl.removeHero(heroData)">Remove Hero</button></td>
+    <tr ng-repeat="hero in hl.heroes">
+      <td>{{hero.persona}}</td>
+      <td>{{hero.alias}}</td>
+      <td>{{hero.name}}</td>
+      <td>{{hero.description}}</td>
+      <td><button class="status_button btn xsmall" ng-click="hl.deleteHero(hero)">Remove Hero</button></td>
     </tr>
   </tbody>
 </table>

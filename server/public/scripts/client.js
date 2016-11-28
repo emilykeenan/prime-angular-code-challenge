@@ -67,17 +67,15 @@ app.controller("EnterHeroController", ["$http", function($http){
       });
     };
 
-    // // function to add a new hero to the database
-    // self.addHero = function() {
-    //   self.newHero.power_id = self.newHero.power_id.id;
-    //   console.log('new hero: ', self.newHero.power_id);
-    //
-    //   $http.post('/heroes', self.newHero)
-    //   .then(function(response) {
-    //     console.log('new hero added');
-    //     self.newHero = {}
-    //   });
-    //   } // post request finished
+    self.deleteHero = function(hero) {
+        var id = hero.id;
+        console.log(hero.id);
+        $http.delete('/heroes/' + id)
+          .then(function(response) {
+            console.log('DELETE finished. Get books again.');
+            getHeroes();
+          });
+      }
 
 
     }]); // end of HeroListController
