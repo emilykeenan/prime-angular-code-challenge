@@ -12,7 +12,7 @@
     <tr ng-repeat="hero in hl.heroes">
       <td><input type="text" ng-model="hero.persona" ng-value="hero.persona" name="persona" class="form-control" /></td>
       <td><input type="text" ng-model="hero.alias" ng-value="hero.alias" name="alias" class="form-control" /></td>
-      <td><select ng-model="hero.name" ng-options="power.name as power.name for power in hl.powers | unique:'name'">
+      <td><select ng-model="hero.name" ng-options="power.name as power.name for power in hl.powers">
         <option value="">{{hero.name}}</option>
       </select></td>
       <td>{{hero.description}}</td>
