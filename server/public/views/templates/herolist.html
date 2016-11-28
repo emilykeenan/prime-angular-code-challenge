@@ -12,7 +12,7 @@
     <tr ng-repeat="hero in hl.heroes">
       <td><input type="text" ng-model="hero.persona" ng-value="hero.persona" name="persona" class="form-control" /></td>
       <td><input type="text" ng-model="hero.alias" ng-value="hero.alias" name="alias" class="form-control" /></td>
-      <td>{{hero.name}}</td>
+      <td><select ng-model="hero.name" ng-options="power as power.name for power in hl.powers track by power.name"></select></td>
       <td>{{hero.description}}</td>
       <td><button class="status_button btn xsmall" ng-click="hl.editHero(hero)">Edit Hero</button></td>
       <td><button class="status_button btn xsmall" ng-click="hl.deleteHero(hero)">Remove Hero</button></td>

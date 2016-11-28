@@ -58,7 +58,7 @@ app.controller("HeroListController", ["$http", function($http){
   self.heroes = [];
   self.powers = [];
 
-  // getSuperpowers();
+  getSuperpowers();
   getHeroes();
 
   function getHeroes() {
@@ -81,21 +81,21 @@ app.controller("HeroListController", ["$http", function($http){
 
   self.editHero = function(hero) {
     var id = hero.id;
-    console.log(hero.id);
+    hero.power_id = hero.name.id;
     console.log(hero);
     $http.put('/heroes/' + id, hero)
     .then(function(response) {
       getHeroes();
     });
   }
-  //
-  // function getSuperpowers() {
-  //   $http.get('/powers')
-  //   .then(function(response) {
-  //     console.log(response.data);
-  //     self.powers = response.data;
-  //   });
-  // };
+
+  function getSuperpowers() {
+    $http.get('/powers')
+    .then(function(response) {
+      console.log(response.data);
+      self.powers = response.data;
+    });
+  };
 
 
 }]); // end of HeroListController
