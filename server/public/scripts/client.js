@@ -45,37 +45,57 @@ app.controller("EnterHeroController", ["$http", function($http){
       console.log('new hero added');
       self.newHero = {}
     });
-    } // post request finished
+  } // post request finished
 
 
-  }]); // end of EnterHeroController
+}]); // end of EnterHeroController
 
-  // begin HeroListController
-  app.controller("HeroListController", ["$http", function($http){
-    console.log('HeroListController is running');
-    var self = this;
-    self.message = 'hl controller is running';
-    self.heroes = [];
+// begin HeroListController
+app.controller("HeroListController", ["$http", function($http){
+  console.log('HeroListController is running');
+  var self = this;
+  self.message = 'hl controller is running';
+  self.heroes = [];
+  self.powers = [];
 
-    getHeroes();
+  // getSuperpowers();
+  getHeroes();
 
-    function getHeroes() {
-      $http.get('/heroes')
-      .then(function(response) {
-        console.log(response.data);
-        self.heroes = response.data;
-      });
-    };
+  function getHeroes() {
+    $http.get('/heroes')
+    .then(function(response) {
+      console.log(response.data);
+      self.heroes = response.data;
+    });
+  };
 
-    self.deleteHero = function(hero) {
-        var id = hero.id;
-        console.log(hero.id);
-        $http.delete('/heroes/' + id)
-          .then(function(response) {
-            console.log('DELETE finished. Get books again.');
-            getHeroes();
-          });
-      }
+  self.deleteHero = function(hero) {
+    var id = hero.id;
+    console.log(hero.id);
+    $http.delete('/heroes/' + id)
+    .then(function(response) {
+      console.log('DELETE finished. Get books again.');
+      getHeroes();
+    });
+  }
+
+  self.editHero = function(hero) {
+    var id = hero.id;
+    console.log(hero.id);
+    console.log(hero);
+    $http.put('/heroes/' + id, hero)
+    .then(function(response) {
+      getHeroes();
+    });
+  }
+  //
+  // function getSuperpowers() {
+  //   $http.get('/powers')
+  //   .then(function(response) {
+  //     console.log(response.data);
+  //     self.powers = response.data;
+  //   });
+  // };
 
 
-    }]); // end of HeroListController
+}]); // end of HeroListController

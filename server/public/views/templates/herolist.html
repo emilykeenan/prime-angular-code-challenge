@@ -10,10 +10,11 @@
   </thead>
   <tbody>
     <tr ng-repeat="hero in hl.heroes">
-      <td>{{hero.persona}}</td>
-      <td>{{hero.alias}}</td>
+      <td><input type="text" ng-model="hero.persona" ng-value="hero.persona" name="persona" class="form-control" /></td>
+      <td><input type="text" ng-model="hero.alias" ng-value="hero.alias" name="alias" class="form-control" /></td>
       <td>{{hero.name}}</td>
       <td>{{hero.description}}</td>
+      <td><button class="status_button btn xsmall" ng-click="hl.editHero(hero)">Edit Hero</button></td>
       <td><button class="status_button btn xsmall" ng-click="hl.deleteHero(hero)">Remove Hero</button></td>
     </tr>
   </tbody>
