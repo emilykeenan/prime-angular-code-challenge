@@ -1,5 +1,3 @@
-<p>{{eh.message}}</p>
-
 <form id="heroForm" class="row">
   <div class="form-group">
     <label for="persona">Persona:</label>
@@ -11,7 +9,5 @@
   </div>
   <label for="month">Power:</label>
   <select ng-model="eh.newHero.power_id" ng-options="power as power.name for power in eh.powers"></select>
-
-
-      <button class="btn btn-default" ng-click="eh.addHero()">Enter a New Hero</button>
-    </form>
+  <button class="btn btn-default" ng-click="eh.addHero()">Enter a New Hero</button>
+</form>

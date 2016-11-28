@@ -48,4 +48,36 @@ app.controller("EnterHeroController", ["$http", function($http){
     } // post request finished
 
 
-  }]);
+  }]); // end of EnterHeroController
+
+  // begin HeroListController
+  app.controller("HeroListController", ["$http", function($http){
+    console.log('HeroListController is running');
+    var self = this;
+    self.message = 'hl controller is running';
+    self.heroes = [];
+
+    getHeroes();
+
+    function getHeroes() {
+      $http.get('/heroes')
+      .then(function(response) {
+        console.log(response.data);
+        self.heroes = response.data;
+      });
+    };
+
+    // // function to add a new hero to the database
+    // self.addHero = function() {
+    //   self.newHero.power_id = self.newHero.power_id.id;
+    //   console.log('new hero: ', self.newHero.power_id);
+    //
+    //   $http.post('/heroes', self.newHero)
+    //   .then(function(response) {
+    //     console.log('new hero added');
+    //     self.newHero = {}
+    //   });
+    //   } // post request finished
+
+
+    }]); // end of HeroListController
