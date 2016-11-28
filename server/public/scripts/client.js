@@ -56,9 +56,9 @@ app.controller("HeroListController", ["$http", function($http){
   var self = this;
   self.message = 'hl controller is running';
   self.heroes = [];
-  self.powers = [];
+  self.currentPowers = [];
 
-  getSuperpowers();
+  // getSuperpowers();
   getHeroes();
 
   function getHeroes() {
@@ -66,6 +66,9 @@ app.controller("HeroListController", ["$http", function($http){
     .then(function(response) {
       console.log(response.data);
       self.heroes = response.data;
+      for (var i = 0; i < self.heroes.length; i++) {
+        self.currentPowers.push(self.heroes[i].name);
+      }
     });
   };
 
@@ -96,6 +99,5 @@ app.controller("HeroListController", ["$http", function($http){
       self.powers = response.data;
     });
   };
-
 
 }]); // end of HeroListController
