@@ -52,3 +52,12 @@ th {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+.delete_button, .edit_button {
+  background: white;
+  border: 1px solid black;
+}
+
+.delete_button:hover, .edit_button:hover {
+  background: hsla(0, 100%, 50%, 0.4);
+}

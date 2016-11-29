@@ -6,7 +6,7 @@
       <th>Superpower</th>
       <th>Superpower Description</th>
       <th>Edit</th>
-      <th>Delete</th>
+      <th>Remove</th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +17,8 @@
         <option value="">{{hero.name}}</option>
       </select></td>
       <td>{{hero.description}}</td>
-      <td><button class="status_button btn xsmall" ng-click="hl.editHero(hero)">Edit Hero</button></td>
-      <td><button class="status_button btn xsmall" ng-click="hl.deleteHero(hero)">Remove Hero</button></td>
+      <td><button class="edit_button btn xsmall" ng-click="hl.editHero(hero)">Edit Hero</button></td>
+      <td><button class="delete_button btn xsmall" ng-click="hl.deleteHero(hero)">Remove Hero</button></td>
     </tr>
   </tbody>
 </table>
